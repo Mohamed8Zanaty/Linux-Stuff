@@ -1,0 +1,22 @@
+# Dark mode
+set recolor true
+
+# Background color
+set recolor-lightcolor "#282828"
+
+# Text color
+set recolor-darkcolor "#ebdbb2"
+
+# Keep images/colors better
+set recolor-keephue true
+
+# UI colors
+set default-bg "#282828"
+set default-fg "#ebdbb2"
+
+set statusbar-bg "#282828"
+set statusbar-fg "#ebdbb2"
+
+set inputbar-bg "#282828"
+set inputbar-fg "#ebdbb2"
+set font "Cairo 11"

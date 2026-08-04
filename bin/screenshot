@@ -1,0 +1,47 @@
+#!/bin/sh
+
+DIR="$HOME/Pictures/Screenshots"
+TMP=$(mktemp --suffix=.png)
+
+mkdir -p "$DIR"
+touch /tmp/dwm-screenshot
+
+choice=$(printf "Fullscreen\nSelection\nWindow" | dmenu -i -p "Screenshot:")
+
+case "$choice" in
+    Fullscreen)
+        maim "$TMP"
+        ;;
+    Selection)
+        maim -s "$TMP"
+        ;;
+    Window)
+        maim -i "$(xdotool selectwindow)" "$TMP"
+        ;;
+    *)
+        rm -f "$TMP" /tmp/dwm-screenshot
+        exit 0
+        ;;
+esac
+
+action=$(printf "Save\nCopy" | dmenu -i -p "Action:")
+
+case "$action" in
+    Save)
+        name=$(printf "" | dmenu -i -p "Name:")
+
+        [ -z "$name" ] && name="screenshot-$(date +%Y-%m-%d-%H-%M-%S)"
+
+        mv "$TMP" "$DIR/$name.png"
+        ;;
+
+    Copy)
+        xclip -selection clipboard -t image/png -i "$TMP"
+        rm -f "$TMP"
+        ;;
+    *)
+        rm -f "$TMP"
+        ;;
+esac
+
+rm -f /tmp/dwm-screenshot

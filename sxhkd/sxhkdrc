@@ -1,0 +1,40 @@
+super + w
+	$BROWSER
+
+super + Return
+	$TERMINAL
+super + c
+	$EDITOR
+super + e
+	$TERMINAL -e ranger
+
+super + space
+	dmenu_run
+
+super + shift + e
+	powermenu
+#super + s
+#	$HOME/bin/toggle_scratchpad.sh
+
+super + equal
+	volume up
+super + minus 
+	volume down
+super + BackSpace
+	volume toggle
+
+
+super + m
+	usbmount
+
+super + s
+  screenshot
+super + r
+	record
+super + d
+	app-launcher
+#super + p
+#	$HOME/bin/passmenu.sh
+
+#super + x
+	#$HOME/bin/x.sh

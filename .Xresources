@@ -1,0 +1,9 @@
+! nsxiv theme
+
+Nsxiv.window.background: #222222
+Nsxiv.window.foreground: #dddddd
+
+Nsxiv.bar.background: #222222
+Nsxiv.bar.foreground: #dddddd
+
+Nsxiv.mark.foreground: #5fafff

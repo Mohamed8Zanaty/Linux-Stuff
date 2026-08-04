@@ -1,0 +1,4 @@
+#!/bin/bash
+doas sv down dhcpcd
+doas dhcpcd -d wlp4s0
+doas sv up dhcpcd

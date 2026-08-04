@@ -1,0 +1,3 @@
+#!/bin/sh
+doas rm -rf /var/cache/xbps/*
+doas xbps-remove -Oo

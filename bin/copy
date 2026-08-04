@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+lines=$(tee >(xclip -selection clipboard >/dev/null) | wc -l)
+echo "Copied $lines line(s) to clipboard."

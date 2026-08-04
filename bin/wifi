@@ -1,0 +1,4 @@
+#!/bin/sh
+doas wpa_passphrase "$1" "$2" | doas tee /etc/wpa_supplicant/wpa_supplicant.confg > /dev/null
+doas sv restart wpa_supplicant
+wifi-fix

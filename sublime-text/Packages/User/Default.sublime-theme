@@ -1,0 +1,28 @@
+// Documentation at https://www.sublimetext.com/docs/themes.html
+{
+	"variables":
+	{
+		"background": "#222222",
+		"forground": "#d0d0d0",
+		"accent": "#d79921"
+	},
+	"rules":
+	[
+		{
+			"class": "sidebar_container",
+			"layer0.tint":"var(background)"
+		},
+		{
+			"class": "title_bar",
+			"layer0.tint": "var(background)"
+		},
+		{
+			"class": "status_bar",
+			"layer0.tint": "var(background)"
+		},
+		{
+			"class": "tab_control",
+			"layer0.tint": "var(background)"
+		}
+	]
+}

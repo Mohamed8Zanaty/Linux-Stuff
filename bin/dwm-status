@@ -1,0 +1,66 @@
+#!/bin/sh
+
+while true; do
+
+    #################################
+    # LEFT STATUS (activities)
+    #################################
+
+    left=""
+
+    if [ -f /tmp/dwm-screenshot ]; then
+        left="$left Screenshot"
+    fi
+
+    if [ -f /tmp/dwm-recording ]; then
+        left="$left Recording"
+    fi
+
+
+    #################################
+    # RIGHT STATUS (system)
+    #################################
+
+    # WiFi
+    wifi=$(timeout 1 nmcli -t -f active,ssid dev wifi 2>/dev/null \
+        | awk -F: '$1=="yes"{print $2}')
+
+    if [ -n "$wifi" ]; then
+        wifi="󰤨 $wifi"
+    else
+        wifi="󰤭 Offline"
+    fi
+
+
+    # Battery
+    if [ -f /sys/class/power_supply/BAT0/capacity ]; then
+        battery=$(cat /sys/class/power_supply/BAT0/capacity)
+        battery="󰁹 ${battery}%"
+    else
+        battery="󰁹 N/A"
+    fi
+
+
+    # RAM
+    ram=$(free -m | awk '/Mem:/ {printf "%.1fG", $3/1024}')
+    ram="󰍛 $ram"
+
+
+    # Disk
+    disk=$(df -h / --output=used | tail -1 | tr -d ' ')
+    disk="󰋊 $disk"
+
+
+    # Time
+    time=$(date "+%-I:%M %p")
+
+
+    #################################
+    # splitstatus separator
+    #################################
+
+    xsetroot -name "$left;$wifi | $battery | $ram | $disk | $time"
+
+
+    sleep 1
+done

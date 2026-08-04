@@ -1,0 +1,17 @@
+#!/bin/bash
+
+i=1
+
+for file in *; do
+    [ -f "$file" ] || continue
+
+    ext="${file##*.}"
+
+    if [ "$ext" = "$file" ]; then
+        mv -- "$file" "$i"
+    else
+        mv -- "$file" "$i.$ext"
+    fi
+
+    i=$((i + 1))
+done

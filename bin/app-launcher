@@ -1,0 +1,9 @@
+#!/bin/sh
+
+FONT="monospace:size=12"
+BG="#222222"
+FG="#bbbbbb"
+SB="#005577"
+SF="#eeeeee"
+
+j4-dmenu-desktop --dmenu="dmenu -fn '$FONT' -nb '$BG' -nf '$FG' -sb '$SB' -sf '$SF' -i -l 15"

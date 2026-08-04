@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# Get block devices (USBs, disks, partitions)
+device=$(lsblk -o NAME,SIZE,TYPE,RM,MOUNTPOINTS -nr \
+    | awk '$4==1 && $3=="part" {print $1 " " $2 " " $5}' \
+    | dmenu -i -p "USB:" \
+    | awk '{print $1}')
+
+[ -z "$device" ] && exit 0
+
+dev="/dev/$device"
+
+# Check if already mounted
+mountpoint=$(lsblk -nr -o MOUNTPOINT "$dev")
+
+if [ -n "$mountpoint" ]; then
+    choice=$(printf "Unmount\nCancel" | dmenu -i -p "$dev mounted at $mountpoint:")
+
+    case "$choice" in
+        Unmount)
+            doas umount "$dev"
+            notify-send "Unmounted" "$dev"
+            ;;
+    esac
+
+else
+    # Create mount point
+    dir="$HOME/mnt/$device"
+
+    doas mkdir -p "$dir"
+
+    doas mount "$dev" "$dir"
+
+    if [ $? -eq 0 ]; then
+        notify-send "Mounted" "$dev -> $dir"
+    else
+        notify-send "Mount failed" "$dev"
+    fi
+fi

@@ -1,0 +1,35 @@
+#!/bin/sh
+
+DIR="$HOME/Videos/Recordings"
+FLAG="/tmp/dwm-recording"
+
+mkdir -p "$DIR"
+
+# Stop recording
+if [ -f "$FLAG" ]; then
+    pkill -INT -x ffmpeg
+    rm "$FLAG"
+    exit 0
+fi
+
+# Name
+name=$(printf "" | dmenu -i -p "Name:")
+
+[ -z "$name" ] && name="recording-$(date +%F-%H-%M-%S)"
+
+# create flag immediately
+touch "$FLAG"
+
+# start recording
+ffmpeg \
+    -f x11grab \
+    -video_size "$(xdpyinfo | awk '/dimensions/{print $2}')" \
+    -framerate 30 \
+    -i "$DISPLAY" \
+    -c:v libx264 \
+    -preset veryfast \
+    -crf 23 \
+    -pix_fmt yuv420p \
+    "$DIR/$name.mp4"
+    
+rm "$FLAG"

@@ -1,0 +1,39 @@
+{
+	"theme": "Adaptive.sublime-theme",
+	"color_scheme": "Monokai.sublime-color-scheme",
+	"font_face": "Fira Code",
+	"ui_font_face": "Cairo",
+	"font_size": 20,
+	"highlight_line": true,
+
+    "word_wrap": false,
+
+    "translate_tabs_to_spaces": true,
+
+    "tab_size": 2,
+
+    "draw_white_space": "selection",
+
+    "index_files": true,
+
+    "show_definitions": true,
+
+    "show_encoding": true,
+
+    "show_line_endings": true,
+
+    "mini_diff": true,
+    "auto_save": true,
+    "auto_save_on_modified": true,
+    "auto_save_delay": 1000,
+
+    "folder_exclude_patterns":
+    [
+        ".git",
+        "build"
+    ],
+	"ignored_packages":
+	[
+		"Vintage",
+    ],
+}

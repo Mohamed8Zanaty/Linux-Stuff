@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "$(xbps-query -m | wc -l) Packeges Installed" 

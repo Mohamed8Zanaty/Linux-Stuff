@@ -1,0 +1,34 @@
+<snippet>
+    <content><![CDATA[
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+
+void zz() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+#ifndef ONLINE_JUDGE
+  freopen("input.txt", "r", stdin);
+#endif
+}
+
+const int INF = 1e9;
+const int LINF = 1e18;
+const int mod = 1e9 + 7;
+
+void solve() {
+  $0
+}
+
+signed main() {
+  zz();
+  int t = 1; // cin >> t;
+  while (t--) solve();
+}
+]]></content>
+
+    <tabTrigger>cpp</tabTrigger>
+    <scope>source.c++</scope>
+    <description>Competitive Programming Template</description>
+</snippet>
